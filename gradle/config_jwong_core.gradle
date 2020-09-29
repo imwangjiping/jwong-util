@@ -1,0 +1,17 @@
+project(':jwong-core') {
+    archivesBaseName = 'jwong-core'
+    dependencies {
+
+        //    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+        // spring boot configuration processor
+//        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+        // spring boot autoconfigure
+        compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: SPRING_BOOT_AUTOCONFIGURE_VERSION
+
+        // spring context support
+        compile group: 'org.springframework', name: 'spring-context-support', version: SPRING_CONTEXT_SUPPORT_VERSION
+
+    }
+}

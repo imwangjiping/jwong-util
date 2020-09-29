@@ -1,0 +1,82 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/milestone' }
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'http://repo.maven.apache.org/maven2' }
+    }
+    dependencies {
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    jar.enabled = true
+    // 解决中文乱码
+    compileJava.options.encoding = 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
+
+    group 'com.imjwong'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/milestone' }
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'http://repo.maven.apache.org/maven2' }
+    }
+
+    dependencies {
+        // junit
+        compile group: 'junit', name: 'junit', version: JUNIT_VERSION
+
+        // lombok
+        compile group: 'org.projectlombok', name: 'lombok', version: LOMBOK_VERSION
+    }
+}
+
+subprojects {
+    dependencies {
+        // bean-util
+        compile group: 'commons-beanutils', name: 'commons-beanutils', version: COMMONS_BEANUTILS_VERSION
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                groupId group
+                artifactId project.name
+                version version
+
+                from components.java
+                // more goes in here
+            }
+        }
+
+        repositories {
+            mavenLocal()
+        }
+    }
+}
+
+apply from: rootProject.getRootDir().getAbsolutePath() + "/gradle/config_jwong_core.gradle"
+apply from: rootProject.getRootDir().getAbsolutePath() + "/gradle/config_jwong_common_util.gradle"
+apply from: rootProject.getRootDir().getAbsolutePath() + "/gradle/config_jwong_tentcent_cloud_util.gradle"
+

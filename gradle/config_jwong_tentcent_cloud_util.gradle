@@ -1,0 +1,10 @@
+project(':jwong-tencent-cloud-util') {
+    archivesBaseName = 'jwong-tencent-cloud-util'
+
+    dependencies {
+        //    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+        compile project(':jwong-core')
+
+    }
+}

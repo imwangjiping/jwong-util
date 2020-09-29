@@ -1,0 +1,14 @@
+project(':jwong-common-util') {
+    archivesBaseName = 'jwong-common-util'
+
+    dependencies {
+        //    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+        compile project(':jwong-core')
+
+        // poi
+        compile group: 'org.apache.poi', name: 'poi', version: POI_VERSION
+        compile group: 'org.apache.poi', name: 'poi-ooxml', version: POI_VERSION
+
+    }
+}

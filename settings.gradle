@@ -1,0 +1,8 @@
+rootProject.name = 'jwong-util'
+// 核心
+include 'jwong-core'
+// 普通工具
+include 'jwong-common-util'
+// 腾讯云
+include 'jwong-tencent-cloud-util'
+
